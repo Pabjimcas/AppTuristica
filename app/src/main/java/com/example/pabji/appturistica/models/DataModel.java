@@ -6,19 +6,19 @@ import java.util.List;
  * Created by pabji on 01/06/2016.
  */
 public class DataModel {
-    List<Trip> trips;
+    List<Destination> trips;
     List<Destination> destinations;
 
-    public DataModel(List<Trip> trips, List<Destination> destinations) {
+    public DataModel(List<Destination> trips, List<Destination> destinations) {
         this.trips = trips;
         this.destinations = destinations;
     }
 
-    public List<Trip> getTrips() {
+    public List<Destination> getTrips() {
         return trips;
     }
 
-    public void setTrips(List<Trip> trips) {
+    public void setTrips(List<Destination> trips) {
         this.trips = trips;
     }
 

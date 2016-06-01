@@ -2,6 +2,7 @@ package com.example.pabji.appturistica.fragments;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -10,6 +11,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +24,7 @@ import com.example.pabji.appturistica.APIHelpers.TurismAPI;
 import com.example.pabji.appturistica.APIHelpers.TurismAPIClient;
 import com.example.pabji.appturistica.R;
 import com.example.pabji.appturistica.activities.MainActivity;
+import com.example.pabji.appturistica.adapters.ItemListAdapter;
 import com.example.pabji.appturistica.models.RequestModel;
 import com.example.pabji.appturistica.models.ResponseModel;
 import com.google.android.gms.common.ConnectionResult;
@@ -43,6 +48,7 @@ public class MainFragment extends Fragment{
 
     private TurismAPI service;
     private Location location;
+    private ItemListAdapter adapter;
 
 
     public static MainFragment newInstance(Location location) {
@@ -75,7 +81,12 @@ public class MainFragment extends Fragment{
                 ResponseModel responseServer = response.body();
                 if (responseServer.getData().getTrips() !=null  && responseServer.getData().getDestinations()!=null){
 
-                    Log.d(TAG,"Tengo datos");
+                    adapter = new ItemListAdapter(getActivity(), responseServer.getData());
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
                 }else{
 
