@@ -6,10 +6,20 @@ package com.example.pabji.appturistica.models;
 public class Destination {
     String name;
     String image_url;
+    String trip_url;
 
-    public Destination(String name, String image_url) {
+    public Destination(String name, String image_url, String trip_url) {
         this.name = name;
         this.image_url = image_url;
+        this.trip_url = trip_url;
+    }
+
+    public String getTrip_url() {
+        return trip_url;
+    }
+
+    public void setTrip_url(String trip_url) {
+        this.trip_url = trip_url;
     }
 
     public String getName() {

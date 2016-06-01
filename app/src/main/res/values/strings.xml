@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppTuristica</string>
+    <string name="acceso_servidor">No es posible acceder al servidor</string>
 </resources>
